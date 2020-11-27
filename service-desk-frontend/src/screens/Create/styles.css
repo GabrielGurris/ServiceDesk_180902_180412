@@ -1,0 +1,19 @@
+#bg{
+    background-color: red;
+    border: solid;
+    border-width: thick;
+    border-radius: 12.5%;
+    transition: background-color 0.3s;
+}
+div#bg:hover{
+    background-color: #fc6969;
+    transform: scale(1.05, 1.05);
+    transition-delay: 2s;
+}
+#bg h5{
+    line-height: 35px;
+}
+#bg h1{
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 2px 2px red;
+}

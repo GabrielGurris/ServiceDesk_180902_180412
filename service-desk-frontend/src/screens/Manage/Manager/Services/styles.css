@@ -1,0 +1,7 @@
+#mainn{
+    font-size: 2pt;
+}
+#incidente {content: "\25AA"; color: red}
+#demanda {content: "\25AA"; color: orchid}
+#catalogo {content: "\25AA"; color: orange}
+
