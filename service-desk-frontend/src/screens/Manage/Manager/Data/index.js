@@ -1,9 +1,25 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../../../components/Navbar';
 import Sidebar from '../../../../components/Sidebar';
+import {getAccount} from '../../../../helpers/account';
+import { get } from '../../../../actions/accountActions';
 
-const SignUp = () => {
+const Data = () => {
+    const [user,setUser] = useState({});
+
+    useEffect(()=>{
+        getAllData();
+    },[]);
+
+    const getAllData = async () => {
+        const account = getAccount();
+
+        const accountApi = await get(account.id);
+        
+        setUser(accountApi.data);
+    }
+
     return (
         <>
             <Navbar />
@@ -12,58 +28,45 @@ const SignUp = () => {
                     <Sidebar />
 
                     <div className="container pt-3">
-                        <h1 className=" text-center">Editar informações</h1>
+                        <h1 className=" text-center">Minhas informações</h1>
                         <h6 className="text-center">Administrador</h6>
                         <div className="d-flex flex-column h-100 pt-3">
                             <form>
                                 <div className="form-group">
                                     <label>Nome completo</label>
-                                    <input type="text" className="form-control" disabled></input>
+                                    <input value={user?.name} type="text" name="name" className="form-control" disabled></input>
                                 </div>
                                 <div className="form-group">
                                     <label>Email</label>
-                                    <input type="email" className="form-control" disabled></input>
+                                    <input value={user?.email} type="email" name="email" className="form-control" disabled></input>
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-lg-5">
                                         <label>Endereço</label>
-                                        <input type="text" className="form-control" required></input>
+                                        <input value={user?.address} type="text" className="form-control" disabled></input>
                                     </div>
                                     <div className="form-group col-lg-1">
                                         <label>Numero</label>
-                                        <input type="number" className="form-control" required></input>
+                                        <input value={user?.naddress} type="number" className="form-control" disabled></input>
                                     </div>
                                     <div className="form-group col-lg-3">
                                         <label>Bairro</label>
-                                        <input type="text" className="form-control" required></input>
+                                        <input value={user?.neighborhood} type="text" className="form-control" disabled></input>
                                     </div>
                                     <div className="form-group col-lg-3">
                                         <label>CEP</label>
-                                        <input type="text" className="form-control" required></input>
+                                        <input value={user?.cep} type="text" className="form-control" disabled></input>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-lg-6 col-sm-12">
                                         <label>Telefone fixo</label>
-                                        <input pattern="[0-9]{2} [0-9]{4}-[0-9]{4}" placeholder="DD XXXXX-XXXX" type="tel" className="form-control" required></input>
+                                        <input value={user?.phone1} pattern="[0-9]{2} [0-9]{4}-[0-9]{4}" placeholder="DD XXXXX-XXXX" type="tel" className="form-control" disabled></input>
                                     </div>
                                     <div className="form-group col-lg-6 col-sm-12">
                                         <label>Telefone celular</label>
-                                        <input pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" placeholder="DD XXXXX-XXXX" type="tel" className="form-control" required></input>
+                                        <input value={user?.phone2} pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" placeholder="DD XXXXX-XXXX" type="tel" className="form-control" disabled></input>
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="form-group col-lg-6 col-sm-12">
-                                        <label>Password</label>
-                                        <input type="password" className="form-control"></input>
-                                    </div>
-                                    <div className="form-group col-lg-6 col-sm-12">
-                                        <label>Password confirmation</label>
-                                        <input type="password" className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="row justify-content-center mt-3">
-                                    <button className="btn btn-danger text-warning btn-round">Salvar</button>
                                 </div>
                             </form>
                         </div>
@@ -73,4 +76,4 @@ const SignUp = () => {
         </>);
 };
 
-export default SignUp;
+export default Data;

@@ -1,12 +1,17 @@
 const express = require('express');
-const { Demand } = require('../models');
+const { Demand, Account } = require('../models');
 
 const router = express.Router();
 
 router.get('/:accountId', async(req, res) => {
     const {accountId} = req.params; 
+    const account = await Account.findOne({where: {id: accountId}});
 
-    const demands = await Demand.findAll({where:{accountId}});
+    let demands;
+    if(account.manager)
+        demands = await Demand.findAll();
+    else    
+        demands = await Demand.findAll({where:{accountId}});
 
     return res.json(demands);
 });

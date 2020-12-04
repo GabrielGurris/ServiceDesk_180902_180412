@@ -5,7 +5,7 @@ import SignIn from './screens/Sign-in';
 import SignUp from './screens/Sign-up';
 import ClientServices from './screens/Manage/Client/Services/index';
 import ManagerServices from './screens/Manage/Manager/Services/index'; 
-import ManagerEdit from './screens/Manage/Manager/Edit/index'; 
+import ManagerData from './screens/Manage/Manager/Data/index'; 
 import CreateService from './screens/Create/index';
 import ClientIncident from './screens/Create/Type/Incident/index';
 import ClientDemand from './screens/Create/Type/Demand/index';
@@ -27,7 +27,7 @@ const App = () => {
                     <Route path="/client/demand" component={ClientDemand}></Route>
                     <Route path="/client/services" component={ClientServices}></Route>
                     <Route path="/client/myData" component={ClientData}></Route>
-                    <Route path="/manager/edit" component={ManagerEdit}></Route>
+                    <Route path="/manager/myData" component={ManagerData}></Route>
                     <Route path="/manager/services" component={ManagerServices}></Route>
                 </Switch>
             </div>

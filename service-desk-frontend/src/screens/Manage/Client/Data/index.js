@@ -5,7 +5,7 @@ import Sidebar from '../../../../components/Sidebar';
 import {getAccount} from '../../../../helpers/account';
 import { get } from '../../../../actions/accountActions';
 
-const SignUp = () => {
+const Data = () => {
 
     const [user,setUser] = useState({});
 
@@ -77,4 +77,4 @@ const SignUp = () => {
         </>);
 };
 
-export default SignUp;
+export default Data;
